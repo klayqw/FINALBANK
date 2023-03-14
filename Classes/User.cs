@@ -5,12 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bank;
+namespace FINALBANK.Classes;
 
 public class User : INotifyPropertyChanged
 {
- 
-    public string? Nickname {
+
+    private string email;
+    public string Email
+    {
+        get => email;
+        set
+        {
+            Console.WriteLine(value.EndsWith("@gmail.com"));
+            if(value.EndsWith("@gmail.com"))
+            {
+                email = value;
+                return;
+            }
+            else if (value.EndsWith("@mail.ru") )
+            {
+                email = value;
+                return;
+            }
+            else if (value.EndsWith("@outlook.com"))
+            {
+                email = value;
+                return;
+            }
+            throw new Exception("Wrong Email");
+        }
+    }
+
+    public string? Nickname
+    {
         get => nickname;
         set
         {
@@ -18,7 +45,7 @@ public class User : INotifyPropertyChanged
             {
                 nickname = null;
             }
-            if(value.Length <= 0 || value.Length >= 12)
+            if (value.Length <= 0 || value.Length >= 12)
             {
                 throw new Exception("Value too small or too big");
             }
@@ -28,7 +55,8 @@ public class User : INotifyPropertyChanged
     }
     private string? nickname;
 
-    public string? Password {
+    public string? Password
+    {
         get => password;
         set
         {
@@ -36,18 +64,18 @@ public class User : INotifyPropertyChanged
             {
                 password = null;
             }
-            if (value.Length <= 0  || value.Length < 4 || value.Length >= 16)
+            if (value.Length <= 0 || value.Length < 4 || value.Length >= 16)
             {
                 throw new Exception("Value too small or too big");
             }
             password = value;
             OnPropertyChanged(nameof(Password));
         }
-             
+
     }
     private string? password;
 
-    public string? Firstname 
+    public string? Firstname
     {
         get => firstname;
         set
@@ -56,7 +84,7 @@ public class User : INotifyPropertyChanged
             {
                 firstname = null;
             }
-            if (value.Length <= 0 || value.Length < 3  || value.Length >= 16)
+            if (value.Length <= 0 || value.Length < 3 || value.Length >= 16)
             {
                 throw new Exception("Value too small or too big");
             }
@@ -65,7 +93,8 @@ public class User : INotifyPropertyChanged
         }
     }
     private string? firstname;
-    public string? Lastname {
+    public string? Lastname
+    {
         get => lastname;
 
         set
@@ -86,7 +115,7 @@ public class User : INotifyPropertyChanged
     public string? Creditcard
     {
         get => creditcard;
-        set 
+        set
         {
             if (value == null)
             {
@@ -102,7 +131,8 @@ public class User : INotifyPropertyChanged
     }
 
     private string? creditcard;
-    public int? Id {
+    public int? Id
+    {
         get => id;
         set
         {
@@ -111,7 +141,7 @@ public class User : INotifyPropertyChanged
         }
     }
     private int? id;
-    public int? Cvv 
+    public int? Cvv
     {
         get => cvv;
         set
@@ -125,16 +155,16 @@ public class User : INotifyPropertyChanged
         }
     }
     private int? cvv;
-    public DateTime? Creditcarddate 
+    public DateTime? Creditcarddate
     {
         get => creditcarddate;
         set
         {
-            if(value == null)
+            if (value == null)
             {
                 creditcarddate = null;
             }
-            if(value.Value.Year < DateTime.Now.Year || value.Value.Year > DateTime.Now.Year + 7)
+            if (value.Value.Year < DateTime.Now.Year || value.Value.Year > DateTime.Now.Year + 7)
             {
                 throw new Exception("Value too small or too big");
             }
@@ -143,7 +173,7 @@ public class User : INotifyPropertyChanged
         }
     }
     private DateTime? creditcarddate;
-    public DateTime? Birthday 
+    public DateTime? Birthday
     {
         get => birthday;
         set
@@ -170,7 +200,7 @@ public class User : INotifyPropertyChanged
             {
                 phone = null;
             }
-            if (value.Length <= 0  || value.Length >= 12)
+            if (value.Length <= 0 || value.Length >= 12)
             {
                 throw new Exception("Value too small or too big");
             }
@@ -179,7 +209,7 @@ public class User : INotifyPropertyChanged
         }
     }
     private string? phone;
-    public double? Balance 
+    public double? Balance
     {
 
         get => balance;
@@ -189,7 +219,7 @@ public class User : INotifyPropertyChanged
             {
                 balance = null;
             }
-            if(value >= double.MaxValue)
+            if (value >= double.MaxValue)
             {
                 throw new Exception("Value too small or too big");
             }

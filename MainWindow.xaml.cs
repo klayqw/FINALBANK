@@ -16,6 +16,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FINALBANK.Classes;
 
 namespace bank
 {
@@ -26,10 +27,7 @@ namespace bank
     {
         public MainWindow()
         {
-            InitializeComponent();
-            var temp2 = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(temp2);
-            var user = list.Find(x => x.Nickname == "klay");
+            InitializeComponent();           
            // new Main(user).Show();
             if (Directory.Exists("User Base") == false)
             {
@@ -57,8 +55,8 @@ namespace bank
                 if (user.Nickname == txtUser.Text || user.Password == txtPass.Password)
                 {
                     MessageBox.Show("Welcome " + user.Nickname + "!", "Welcome", MessageBoxButton.OK, MessageBoxImage.Information);
-                    var mainwin = new Main(user);
-                    mainwin.Show();
+                    //var mainwin = new Main(user);
+                    //mainwin.Show();
                     this.Close();
                     return;
                 }
@@ -80,7 +78,7 @@ namespace bank
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            //new Registation().ShowDialog();
+            new Registation().ShowDialog();
         }
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
