@@ -83,7 +83,7 @@ namespace bank
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
-            //new Forgot().ShowDialog();
+            new Forgot().ShowDialog();
         }
 
     }
