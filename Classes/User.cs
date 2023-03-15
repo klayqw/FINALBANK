@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FINALBANK.Classes;
 
@@ -29,9 +26,11 @@ public class User : INotifyPropertyChanged
             else if (value.EndsWith("@outlook.com"))
             {
                 email = value;
+                
                 return;
             }
             throw new Exception("Wrong Email");
+            OnPropertyChanged(nameof(Email));
         }
     }
 
@@ -172,24 +171,7 @@ public class User : INotifyPropertyChanged
         }
     }
     private DateTime? creditcarddate;
-    public DateTime? Birthday
-    {
-        get => birthday;
-        set
-        {
-            if (value == null)
-            {
-                birthday = null;
-            }
-            if (value.Value.Year < 1970)
-            {
-                throw new Exception("Value null");
-            }
-            birthday = value;
-            OnPropertyChanged(nameof(Birthday));
-        }
-    }
-    private DateTime? birthday;
+    
     public string? Phone
     {
         get => phone;
@@ -202,7 +184,7 @@ public class User : INotifyPropertyChanged
             if (value.Length <= 0 || value.Length >= 12)
             {
                 throw new Exception("Value too small or too big");
-            }
+            }                       
             phone = value;
             OnPropertyChanged(nameof(Phone));
         }

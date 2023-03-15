@@ -23,14 +23,15 @@ namespace bank
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Registation : Window
+    public partial class EditProfile : Window
     {
         int code;
         bool issend = false;
-
-        public Registation()
+        User user;
+        public EditProfile(User user)
         {
             InitializeComponent();
+            this.user = user;
         }  
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
@@ -71,34 +72,22 @@ namespace bank
                         MessageBox.Show("Invalid Code!", "REG ERROR", MessageBoxButton.OK, MessageBoxImage.Error);                        
                         return;
                     }
-                }
-                if (list.Any(x => x.Nickname == txtUser.Text))
-                {
-                    MessageBox.Show("This user allready exists", "REG ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                    ClearAll();
-                    return;
-                }
-                if(list.Any(x => x.Email == txtEmail.Text))
-                {
-                    MessageBox.Show("This user allready exists", "REG ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                    ClearAll();
-                    return;
-                }
-
+                }               
+               
 
                 var newUser = new User()
                 {
                     Nickname = txtUser.Text,
                     Password = txtPass.Password,
                     Email = txtEmail.Text,
-                    Phone = "000000000000",
-                    Cvv = 0000,
-                    Id = new Random().Next(10000000, 99999999),                    
-                    Creditcarddate = DateTime.Now,
-                    Creditcard = "0000000000000000",
-                    Firstname = "Unknow",
-                    Lastname = "Unknow",
-                    Balance = 0,
+                    Phone = txtPhone.Text,
+                    Cvv = user.Cvv,
+                    Id = user.Id,                   
+                    Creditcarddate = user.Creditcarddate,
+                    Creditcard = user.Creditcard,
+                    Firstname = txtfirstname.Text,
+                    Lastname = txtlastname.Text,
+                    Balance = user.balance,
                 };
 
                 if (issend == false)
@@ -109,9 +98,14 @@ namespace bank
                     txtUser.IsEnabled = false;
                     txtEmail.IsEnabled = false;
                     txtPass.IsEnabled = false;
+                    txtfirstname.IsEnabled = false;
+                    txtlastname.IsEnabled = false;
+                    txtPhone.IsEnabled = false;
+
                     return;
                 }
 
+                list.RemoveAt(list.FindIndex(x => x.Nickname == user.Nickname));
                 list.Add(newUser);
                 var newjson = JsonSerializer.Serialize(list);
                 File.WriteAllText("User Base/USERBASE.json", newjson);

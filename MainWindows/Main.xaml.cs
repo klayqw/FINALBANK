@@ -71,6 +71,7 @@ public partial class Main : Window, INotifyPropertyChanged
         Translition.Visibility = Visibility.Hidden;
         ProfileGrid.Visibility = Visibility.Hidden; 
         Payment.Visibility = Visibility.Hidden;
+        GameGrid.Visibility = Visibility.Hidden;
     }
 
     private void translations_Click(object sender, RoutedEventArgs e)
@@ -117,7 +118,9 @@ public partial class Main : Window, INotifyPropertyChanged
         creditdate.Text = user.Creditcarddate.ToString();   
         phone.Text = user.Phone;
         balance.Text = user.Balance.ToString();
-        id.Text = user.Id.ToString();      
+        id.Text = user.Id.ToString();
+        lastname.Text = user.Lastname;
+        firstname.Text = user.Firstname;
         email.Text = user.Email;
         return;
     }
@@ -141,5 +144,22 @@ public partial class Main : Window, INotifyPropertyChanged
     {
       
         new Comunal((sender as Button).Content.ToString()).ShowDialog();
+    }
+
+    private void changeprofile_Click(object sender, RoutedEventArgs e)
+    {
+        new EditProfile(user).ShowDialog();
+    }
+
+    private void game_Click(object sender, RoutedEventArgs e)
+    {
+        HideAll();
+        GameGrid.Visibility = Visibility.Visible;
+
+    }
+
+    private void games_Click(object sender, RoutedEventArgs e)
+    {
+        new Game((sender as Button).Content.ToString(),user).ShowDialog();
     }
 }

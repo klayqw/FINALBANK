@@ -268,37 +268,6 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button x:Name="addphone"                          
-                    BorderThickness="0"
-                    Content="ADD PHONE"
-                    Foreground="White"
-                    FontSize="25"
-                    FontWeight="Medium"
-                    FontFamily="Montserrat"
-                    Cursor="Hand"
-                    Margin="0,362,914,164" 
-                    Grid.Row="1">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#462AD8"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#28AEED"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Width="150" Height="40"
-                                CornerRadius="20"
-                                Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
-                                    HorizontalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
                 <Button x:Name="addcart"                          
                     BorderThickness="0"
                     Content="ADD CARD"
@@ -508,8 +477,134 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Cursor="Hand"   
-                    
+                        Click="game_Click"  
                         Margin="490,10,118,194">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="150" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+                <Grid Name ="GameGrid" Margin="182,108,131,176" Grid.Row="1" Visibility="Visible">
+                    <Button x:Name="steam"                          
+                        BorderThickness="0"
+                        Content="STEAM"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"   
+                        Click="games_Click"
+                        Margin="10,10,598,194">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="150" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="Origin"                          
+                        BorderThickness="0"
+                        Content="ORIGIN"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"   
+                    
+                        Margin="170,10,438,194">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="150" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="battlenet"                          
+                        BorderThickness="0"
+                        Content="BATTLENET"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"   
+                    
+                        Margin="330,10,278,194">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="150" Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="epicgames"                          
+                        BorderThickness="0"
+                        Content="EPIC GAMES"
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"   
+                    
+                        Margin="485,10,123,194">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#462AD8"/>
@@ -599,7 +694,7 @@
                     </Button>
                 </DockPanel>
 
-                <Grid Name ="ProfileGrid" Margin="182,102,85,113" Grid.Row="1" Visibility="Visible">
+                <Grid Name ="ProfileGrid" Margin="182,102,85,113" Grid.Row="1" Visibility="Hidden">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*">
 
@@ -647,14 +742,14 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Margin="10,200,585,121"/>
-                    <TextBlock Foreground="White" Name ="nickname"  Text="{Binding User.Nickname}" Margin="147,5,459,326" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "password" Text="{Binding User.Password}" Margin="132,40,474,291" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "creditcard" Text="{Binding User.Creditcard}" Margin="260,74,310,255" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "cvv" Text="{Binding User.Cvv}" Margin="83,110,523,221" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "creditdate" Text="{Binding User.Creditcarddate}" Margin="147,140,459,191" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "balance" Text="{Binding User.Balance}" Margin="117,170,488,161" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "phone" Text="{Binding User.Phone}" Margin="219,205,386,126" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "email" Text="{Binding User.Email}" Margin="83,270,522,61" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" Name ="nickname"  Text="{Binding user.Nickname}" Margin="147,5,459,326" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" Name = "password" Text="{Binding user.Password}" Margin="132,40,474,291" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" Name = "creditcard" Text="{Binding user.Creditcard}" Margin="260,74,310,255" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" Name = "cvv" Text="{Binding user.Cvv}" Margin="83,110,523,221" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" Name = "creditdate" Text="{Binding user.Creditcarddate}" Margin="147,140,459,191" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" Name = "balance" Text="{Binding user.Balance}" Margin="117,170,488,161" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" Name = "phone" Text="{Binding user.Phone}" Margin="219,205,386,126" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" Name = "email" Text="{Binding user.Email}" Margin="83,270,522,61" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
                     <TextBlock Text="Id: "
                         Foreground="White"
                         FontSize="25"
@@ -668,6 +763,20 @@
                         FontFamily="Montserrat"
                         Margin="10,265,585,56"/>
                     <TextBlock x:Name = "id" Foreground="White" Text="{Binding Id}" Margin="51,240,554,91" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Text="First name: "
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Margin="442,6,153,315"/>
+                    <TextBlock Text="Last name: "
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Margin="442,38,153,283"/>
+                    <TextBlock Foreground="White" x:Name ="firstname"  Text="{Binding user.Firstname}" Margin="580,12,26,319" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="White" x:Name ="lastname"  Text="{Binding user.Lastname}" Margin="580,40,26,291" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
 
 
                 </Grid>
@@ -711,8 +820,9 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,407,914,119" 
-                    Grid.Row="1">
+                    Margin="0,362,914,164" 
+                    Grid.Row="1"
+                    Click="changeprofile_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Background" Value="#462AD8"/>
@@ -742,7 +852,7 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,452,914,74" 
+                    Margin="0,407,914,119" 
                     Grid.Row="1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
