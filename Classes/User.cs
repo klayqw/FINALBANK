@@ -15,8 +15,7 @@ public class User : INotifyPropertyChanged
     {
         get => email;
         set
-        {
-            Console.WriteLine(value.EndsWith("@gmail.com"));
+        {           
             if(value.EndsWith("@gmail.com"))
             {
                 email = value;
