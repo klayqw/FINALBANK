@@ -119,6 +119,70 @@ namespace bank
             
         }
 
-        
+        private void nickcheck_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)nickcheck.IsChecked)
+            {
+                this.txtUser.IsEnabled = false;
+                this.txtUser.Text = user.Nickname;
+                return;
+            }
+            this.txtUser.IsEnabled = true;           
+        }
+
+        private void passwordcheck_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)passwordcheck.IsChecked)
+            {
+                this.txtPass.IsEnabled = false;
+                this.txtPass.Password = user.Password;
+                return;
+            }
+            this.txtPass.IsEnabled = true;
+        }
+
+        private void emailcheck_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)emailcheck.IsChecked)
+            {
+                this.txtEmail.IsEnabled = false;
+                this.txtEmail.Text = user.Email;
+                return;
+            }
+            this.txtEmail.IsEnabled = true;
+        }
+
+        private void phone_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)phonecheck.IsChecked)
+            {
+                this.txtPhone.IsEnabled = false;
+                this.txtPhone.Text = user.Phone;
+                return;
+            }
+            this.txtPhone.IsEnabled = true;
+        }
+
+        private void firstcheck_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)firstcheck.IsChecked)
+            {
+                this.txtfirstname.IsEnabled = false;
+                this.txtfirstname.Text = user.Firstname;
+                return;
+            }
+            this.txtfirstname.IsEnabled = true;
+        }
+
+        private void lastcheck_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)lastcheck.IsChecked)
+            {
+                this.txtlastname.IsEnabled = false;
+                this.txtlastname.Text = user.Lastname;
+                return;
+            }
+            this.txtlastname.IsEnabled = true;
+        }
     }
 }

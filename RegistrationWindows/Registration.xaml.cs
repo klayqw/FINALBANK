@@ -59,8 +59,8 @@ namespace bank
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            var json = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(json);
+            var jsontemp = File.ReadAllText("User Base/USERBASE.json");
+            var list = JsonSerializer.Deserialize<List<User>>(jsontemp);
 
             try
             {
@@ -91,7 +91,7 @@ namespace bank
                     Nickname = txtUser.Text,
                     Password = txtPass.Password,
                     Email = txtEmail.Text,
-                    Phone = "000000000000",
+                    Phone = "00000000000",
                     Cvv = 0000,
                     Id = new Random().Next(10000000, 99999999),                    
                     Creditcarddate = DateTime.Now,
@@ -113,7 +113,7 @@ namespace bank
                 }
 
                 list.Add(newUser);
-                var newjson = JsonSerializer.Serialize(list);
+                var newjson = JsonSerializer.Serialize(list);               
                 File.WriteAllText("User Base/USERBASE.json", newjson);
                 MessageBox.Show("User was added", "REG TRUE", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();

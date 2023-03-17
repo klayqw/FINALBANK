@@ -45,7 +45,7 @@ public class User : INotifyPropertyChanged
             }
             if (value.Length <= 0 || value.Length >= 12)
             {
-                throw new Exception("Value too small or too big");
+                throw new Exception("Value name too small or too big");
             }
             nickname = value;
             OnPropertyChanged(nameof(Nickname));
@@ -64,7 +64,7 @@ public class User : INotifyPropertyChanged
             }
             if (value.Length <= 0 || value.Length < 4 || value.Length >= 16)
             {
-                throw new Exception("Value too small or too big");
+                throw new Exception("Value pass too small or too big");
             }
             password = value;
             OnPropertyChanged(nameof(Password));
@@ -84,7 +84,7 @@ public class User : INotifyPropertyChanged
             }
             if (value.Length <= 0 || value.Length < 3 || value.Length >= 16)
             {
-                throw new Exception("Value too small or too big");
+                throw new Exception("Value first name too small or too big");
             }
             firstname = value;
             OnPropertyChanged(nameof(Firstname));
@@ -103,7 +103,7 @@ public class User : INotifyPropertyChanged
             }
             if (value.Length <= 0 || value.Length < 6 || value.Length >= 18)
             {
-                throw new Exception("Value too small or too big");
+                throw new Exception("Value last name too small or too big");
             }
             lastname = value;
             OnPropertyChanged(nameof(Lastname));
@@ -121,7 +121,7 @@ public class User : INotifyPropertyChanged
             }
             if (value.Length != 16)
             {
-                throw new Exception("Value too small or too big");
+                throw new Exception("Value card too small or too big");
             }
             creditcard = value;
             OnPropertyChanged(nameof(Creditcard));
@@ -164,7 +164,7 @@ public class User : INotifyPropertyChanged
             }
             if (value.Value.Year < DateTime.Now.Year || value.Value.Year > DateTime.Now.Year + 7)
             {
-                throw new Exception("Value too small or too big");
+                throw new Exception("Value date too small or too big");
             }
             creditcarddate = value;
             OnPropertyChanged(nameof(Creditcarddate));
@@ -183,7 +183,7 @@ public class User : INotifyPropertyChanged
             }
             if (value.Length <= 0 || value.Length >= 12)
             {
-                throw new Exception("Value too small or too big");
+                throw new Exception("Value phone too small or too big");
             }                       
             phone = value;
             OnPropertyChanged(nameof(Phone));

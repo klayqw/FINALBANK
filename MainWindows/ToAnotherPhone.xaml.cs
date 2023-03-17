@@ -2,9 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 using FINALBANK.Classes;
 
 namespace bank
@@ -12,14 +23,12 @@ namespace bank
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Game : Window
+    public partial class ToAnotherPhone : Window
     {
         User user;
-        public Game(string buttonname,User user)
+        public ToAnotherPhone(User user)
         {
             InitializeComponent();
-            DataContext = this;
-            LabelSet.Text = buttonname;
             this.user = user;
         }  
 
@@ -47,9 +56,15 @@ namespace bank
         private void btnApp_Click(object sender, RoutedEventArgs e)
         {
             var json = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(json);
+            var storage = JsonSerializer.Deserialize<List<User>>(json);
             try
-            {                         
+            {
+                if(storage.Any(x => x.Phone == txtUser.Text) == false)
+                {
+                    MessageBox.Show("name not find");
+                    ClearAll();
+                    return;
+                }             
                 if(txtMoney.Text.Length == 0)
                 {
                     MessageBox.Show("Money not find");
@@ -63,8 +78,16 @@ namespace bank
                     ClearAll();
                     return;
                 }
-                               
 
+                var user_toadd = storage.Find(x => x.Phone == txtUser.Text);
+               
+                if(user_toadd.Creditcard == "0000000000000000")
+                {
+                    MessageBox.Show("Card is null");
+                    ClearAll();
+                    this.Close();
+                    return;
+                }
                 if(user.Creditcard == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
@@ -72,20 +95,30 @@ namespace bank
                     this.Close();
                     return;
                 }
-                
-                if(user.Balance - double.Parse(txtMoney.Text)  < 0)
+                if(user.Balance - double.Parse(txtMoney.Text) < 0)
                 {
-                    MessageBox.Show("Not enought money on balance!");
+                    MessageBox.Show("Not enought money");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                list.RemoveAt(list.FindIndex(x => x.Nickname == user.Nickname));
+                if(user.Creditcarddate < DateTime.Now || user_toadd.Creditcarddate < DateTime.Now)
+                {
+                    MessageBox.Show("Card is broken");
+                    ClearAll();
+                    this.Close();
+                    return;
+                }
+
+                user_toadd.Balance += double.Parse(txtMoney.Text);
                 user.Balance -= double.Parse(txtMoney.Text);
-                list.Add(user);
-                var jsonnew = JsonSerializer.Serialize(list);
-                File.WriteAllText("User Base/USERBASE.json", jsonnew);
-                MessageBox.Show("All done!", "Games", MessageBoxButton.OK, MessageBoxImage.Information);
+                storage.RemoveAt(storage.FindIndex(x => x.Phone == txtUser.Text));
+                storage.RemoveAt(storage.FindIndex(x => x.Nickname == user.Nickname));
+                storage.Add(user_toadd);
+                storage.Add(user);
+                var jsonfile = JsonSerializer.Serialize(storage);
+                File.WriteAllText("User Base/USERBASE.json", jsonfile);
+                MessageBox.Show("All done!", "Replish", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 return;
             }

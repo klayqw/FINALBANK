@@ -273,6 +273,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                
                 <TextBlock Text="First Name"
                     Foreground="DarkGray"
                     FontSize="12"
@@ -321,6 +322,12 @@
                             AlignmentX="Left"/>
                     </TextBox.Background>
                 </TextBox>
+                <CheckBox Name ="nickcheck" Margin="560,157,393,339" Grid.Row="1" Content="Use old nickname" Foreground="DarkGray" FontSize="13" Click="nickcheck_Click"/>
+                <CheckBox x:Name ="passwordcheck" Margin="560,180,393,316" Grid.Row="1" Content="Use old password" Foreground="DarkGray" FontSize="13" Click="passwordcheck_Click"/>
+                <CheckBox x:Name ="emailcheck" Margin="560,200,393,296" Grid.Row="1" Content="Use old email" Foreground="DarkGray" FontSize="13" Click="emailcheck_Click"/>
+                <CheckBox x:Name ="phonecheck" Margin="560,220,393,276" Grid.Row="1" Content="Use old phone" Foreground="DarkGray" FontSize="13" Click="phone_Click"/>
+                <CheckBox x:Name ="firstcheck" Margin="560,238,393,258" Grid.Row="1" Content="Use old first name" Foreground="DarkGray" FontSize="13" Click="firstcheck_Click"/>
+                <CheckBox x:Name ="lastcheck" Margin="560,256,393,240" Grid.Row="1" Content="Use old last name" Foreground="DarkGray" FontSize="13" Click="lastcheck_Click"/>
             </Grid>
         </Border>
 

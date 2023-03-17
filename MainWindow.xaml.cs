@@ -28,15 +28,15 @@ namespace bank
         public MainWindow()
         {
             InitializeComponent();
-            var temp2 = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(temp2);
+            var jsontemp = File.ReadAllText("User Base/USERBASE.json");
+            var list = JsonSerializer.Deserialize<List<User>>(jsontemp);
             var user = list.Find(x => x.Nickname == "klay");
             new Main(user).Show();
             if (Directory.Exists("User Base") == false)
             {
                 Directory.CreateDirectory("User Base");
-                var temp = new List<User>();
-                var json = JsonSerializer.Serialize(temp);
+                var userlist = new List<User>();
+                var json = JsonSerializer.Serialize(userlist);
                 File.WriteAllText("User Base/USERBASE.json", json);
             }
 
@@ -58,8 +58,8 @@ namespace bank
                 if (user.Nickname == txtUser.Text || user.Password == txtPass.Password)
                 {
                     MessageBox.Show("Welcome " + user.Nickname + "!", "Welcome", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //var mainwin = new Main(user);
-                    //mainwin.Show();
+                    var mainwin = new Main(user);
+                    mainwin.Show();
                     this.Close();
                     return;
                 }

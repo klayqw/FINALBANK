@@ -501,7 +501,7 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <Grid Name ="GameGrid" Margin="182,108,131,176" Grid.Row="1" Visibility="Visible">
+                <Grid Name ="GameGrid" Margin="182,108,131,176" Grid.Row="1" Visibility="Hidden">
                     <Button x:Name="steam"                          
                         BorderThickness="0"
                         Content="STEAM"
@@ -627,7 +627,7 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <DockPanel Margin="199,70,131,283" Grid.Row="1" LastChildFill="False" Name="Translition" Visibility="Hidden">
+                <Grid Margin="199,70,131,283" Grid.Row="1" Name="Translition" Visibility="Visible">
                     <Button x:Name="ToAnotherPerson"                  
                     BorderThickness="0"
                     Content="To Another Person"
@@ -636,9 +636,8 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Grid.Row="1"
                     RenderTransformOrigin="0.0,0.0" Width="154"
-                    Click="ToAnotherPerson_Click">
+                    Click="ToAnotherPerson_Click" Margin="176,0,416,0">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#462AD8"/>
@@ -668,9 +667,8 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Grid.Row="1"
                     RenderTransformOrigin="0.0,0.0" Width="171"
-                            Click="ToAnotherCard_Click">
+                            Click="ToAnotherCard_Click" Margin="0,0,575,0">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#462AD8"/>
@@ -692,7 +690,69 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                </DockPanel>
+                    <Button x:Name="ToAnotherPhone"                  
+                        BorderThickness="0"
+                        Content="To Another Phone"
+                        Foreground="White"
+                        FontSize="15"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        RenderTransformOrigin="0.0,0.0" Width="154"
+                        Click="ToAnotherPhone_Click" Margin="335,0,257,0">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="150" Height="100"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="ToAnotherEmail"                  
+                        BorderThickness="0"
+                        Content="To Another Email"
+                        Foreground="White"
+                        FontSize="15"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        RenderTransformOrigin="0.0,0.0" Width="154"
+                        Click="ToAnotherEmail_Click" Margin="494,0,98,0">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="150" Height="100"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
 
                 <Grid Name ="ProfileGrid" Margin="182,102,85,113" Grid.Row="1" Visibility="Hidden">
                     <Grid.ColumnDefinitions>
@@ -875,7 +935,6 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-
 
             </Grid>
         </Border>

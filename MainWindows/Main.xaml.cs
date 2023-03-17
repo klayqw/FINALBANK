@@ -162,4 +162,14 @@ public partial class Main : Window, INotifyPropertyChanged
     {
         new Game((sender as Button).Content.ToString(),user).ShowDialog();
     }
+
+    private void ToAnotherPhone_Click(object sender, RoutedEventArgs e)
+    {
+        new ToAnotherPhone(user).ShowDialog();
+    }
+
+    private void ToAnotherEmail_Click(object sender, RoutedEventArgs e)
+    {
+        new ToAnotherEmail(user).ShowDialog(); 
+    }
 }
