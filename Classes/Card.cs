@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace FINALBANK.Classes;
 
+public enum CardType
+{
+    None,
+    Visa,
+    MasterCard,
+}
 public class Card
 {
+    public CardType Type { get; private set; } = CardType.None;
+
     private double? balance;
     public double? Balance
     {
@@ -40,6 +48,14 @@ public class Card
             if (value.Length != 16)
             {
                 throw new Exception("Value card too small or too big");
+            }
+            if (value[0] == '4')
+            {
+                Type = CardType.Visa;
+            }
+            if (value[0] == '5')
+            {
+                Type = CardType.MasterCard;
             }
             cardnumber = value;            
         }

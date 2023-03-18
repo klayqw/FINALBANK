@@ -23,6 +23,22 @@
             <DoubleAnimation From="0" To="2" Duration="0:0:0.8" Storyboard.TargetName="Translition" Storyboard.TargetProperty="Opacity" />
             <ThicknessAnimation From="199,100,131,283" To="199,70,131,283" Duration="0:0:0.8" Storyboard.TargetName="Translition" Storyboard.TargetProperty="Margin" />
         </Storyboard>
+
+        <Storyboard x:Key="ProfileStack">
+            <DoubleAnimation From="0" To="2" Duration="0:0:0.8" Storyboard.TargetName="ProfileGrid" Storyboard.TargetProperty="Opacity" />
+            <ThicknessAnimation From="182,120,85,113" To="182,102,85,113" Duration="0:0:0.8" Storyboard.TargetName="ProfileGrid" Storyboard.TargetProperty="Margin" />
+        </Storyboard>
+
+        <Storyboard x:Key="PaymentStack">
+            <DoubleAnimation From="0" To="2" Duration="0:0:0.8" Storyboard.TargetName="Payment" Storyboard.TargetProperty="Opacity" />
+            <ThicknessAnimation From="182,140,131,188" To="182,120,131,188" Duration="0:0:0.8" Storyboard.TargetName="Payment" Storyboard.TargetProperty="Margin" />
+        </Storyboard>
+        
+        <Storyboard x:Key="GameStack">
+            <DoubleAnimation From="0" To="2" Duration="0:0:0.8" Storyboard.TargetName="GameGrid" Storyboard.TargetProperty="Opacity" />
+            <ThicknessAnimation From="182,125,131,176" To="182,108,131,176" Duration="0:0:0.8" Storyboard.TargetName="GameGrid" Storyboard.TargetProperty="Margin" />
+        </Storyboard>
+        
     </Window.Resources>
 
     <Border CornerRadius="12">
@@ -541,7 +557,7 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Cursor="Hand"   
-                    
+                        Click="games_Click"
                         Margin="170,10,438,194">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
@@ -572,7 +588,7 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Cursor="Hand"   
-                    
+                        Click="games_Click"
                         Margin="330,10,278,194">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
@@ -603,7 +619,7 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Cursor="Hand"   
-                    
+                        Click="games_Click"
                         Margin="485,10,123,194">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
@@ -627,7 +643,7 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <Grid Margin="199,70,131,283" Grid.Row="1" Name="Translition" Visibility="Visible">
+                <Grid Margin="199,70,131,283" Grid.Row="1" Name="Translition" Visibility="Hidden">
                     <Button x:Name="ToAnotherPerson"                  
                     BorderThickness="0"
                     Content="To Another Person"
@@ -801,15 +817,15 @@
                         FontSize="25"
                         FontWeight="Medium"
                         FontFamily="Montserrat"
-                        Margin="10,200,585,121"/>
-                    <TextBlock Foreground="White" Name ="nickname"  Text="{Binding user.Nickname}" Margin="147,5,459,326" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "password" Text="{Binding user.Password}" Margin="132,40,474,291" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "creditcard" Text="{Binding user.Creditcard}" Margin="260,74,310,255" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "cvv" Text="{Binding user.Cvv}" Margin="83,110,523,221" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "creditdate" Text="{Binding user.Creditcarddate}" Margin="147,140,459,191" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "balance" Text="{Binding user.Balance}" Margin="117,170,488,161" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "phone" Text="{Binding user.Phone}" Margin="219,205,386,126" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" Name = "email" Text="{Binding user.Email}" Margin="83,270,522,61" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                        Margin="10,290,585,31"/>
+                    <TextBlock Foreground="DarkGray" Name ="nickname"  Text="{Binding user.Nickname}" Margin="144,6,486,329" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" Name = "password" Text="{Binding user.Password}" Margin="132,40,474,291" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" Name = "creditcard" Text="{Binding user.Creditcard}" Margin="260,74,310,255" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" Name = "cvv" Text="{Binding user.Cvv}" Margin="71,110,535,221" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" Name = "creditdate" Text="{Binding user.Creditcarddate}" Margin="132,140,474,191" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" Name = "balance" Text="{Binding user.Balance}" Margin="119,170,486,161" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" Name = "phone" Text="{Binding user.Phone}" Margin="200,299,405,37" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" Name = "email" Text="{Binding user.Email}" Margin="83,270,522,61" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
                     <TextBlock Text="Id: "
                         Foreground="White"
                         FontSize="25"
@@ -822,7 +838,7 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Margin="10,265,585,56"/>
-                    <TextBlock x:Name = "id" Foreground="White" Text="{Binding Id}" Margin="51,240,554,91" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock x:Name = "id" Foreground="DarkGray" Text="{Binding Id}" Margin="51,240,554,91" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
                     <TextBlock Text="First name: "
                         Foreground="White"
                         FontSize="25"
@@ -835,8 +851,15 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Margin="442,38,153,283"/>
-                    <TextBlock Foreground="White" x:Name ="firstname"  Text="{Binding user.Firstname}" Margin="580,12,26,319" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
-                    <TextBlock Foreground="White" x:Name ="lastname"  Text="{Binding user.Lastname}" Margin="580,40,26,291" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" x:Name ="firstname"  Text="{Binding user.Firstname}" Margin="580,12,26,319" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Foreground="DarkGray" x:Name ="lastname"  Text="{Binding user.Lastname}" Margin="580,40,26,291" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
+                    <TextBlock Text="Type: "
+                        Foreground="White"
+                        FontSize="25"
+                        FontWeight="Medium"
+                        FontFamily="Montserrat"
+                        Margin="10,200,677,121"/>
+                    <TextBlock Foreground="DarkGray" x:Name = "type" Text="{Binding user.Type}" Margin="78,205,527,126" FontSize="15" FontWeight="Medium" FontFamily="Montserrat"/>
 
 
                 </Grid>

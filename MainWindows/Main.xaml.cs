@@ -101,16 +101,21 @@ public partial class Main : Window, INotifyPropertyChanged
 
     private void payment_Click(object sender, RoutedEventArgs e)
     {
-        HideAll();
+        HideAll();      
         Payment.Visibility = Visibility.Visible;
+        var storyboard = FindResource("PaymentStack") as Storyboard;
+        storyboard.Begin();
     }
+
   
 
     private void profile_Click(object sender, RoutedEventArgs e)
     {      
-        HideAll();
+        HideAll();     
         user = func.UserUpdate(user);
         ProfileGrid.Visibility = Visibility.Visible;
+        var storyboard = FindResource("ProfileStack") as Storyboard;
+        storyboard.Begin();
         nickname.Text = user.Nickname;
         password.Text = user.Password;       
         creditcard.Text = user.card.CardNumber;
@@ -122,6 +127,7 @@ public partial class Main : Window, INotifyPropertyChanged
         lastname.Text = user.Lastname;
         firstname.Text = user.Firstname;
         email.Text = user.Email;
+        type.Text = user.card.Type.ToString();
         return;
     }
 
@@ -155,6 +161,8 @@ public partial class Main : Window, INotifyPropertyChanged
     {
         HideAll();
         GameGrid.Visibility = Visibility.Visible;
+        var storyboard = FindResource("GameStack") as Storyboard;
+        storyboard.Begin();
 
     }
 

@@ -48,13 +48,13 @@ namespace bank
             var storage = JsonSerializer.Deserialize<List<User>>(json);
             try
             {
-                if(storage.Any(x => x.card.CardNumber == txtUser.Text) == false)
+                if (storage.Any(x => x.card.CardNumber == txtUser.Text) == false)
                 {
                     MessageBox.Show("Not such card in our base!");
                     ClearAll();
                     return;
-                }             
-                if(txtMoney.Text.Length == 0)
+                }
+                if (txtMoney.Text.Length == 0)
                 {
                     MessageBox.Show("Money not find");
                     ClearAll();
@@ -69,36 +69,36 @@ namespace bank
                 }
 
                 var user_toadd = storage.Find(x => x.card.CardNumber == txtUser.Text);
-               
-                if(user_toadd.card.CardNumber == "0000000000000000")
+
+                if (user_toadd.card.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if(user.card.CardNumber == "0000000000000000")
+                if (user.card.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if(user.card.Balance - double.Parse(txtMoney.Text) < 0)
+                if (user.card.Balance - double.Parse(txtMoney.Text) < 0)
                 {
                     MessageBox.Show("Not enought money");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if(user.card.Carddate < DateTime.Now || user_toadd.card.Carddate < DateTime.Now)
+                if (user.card.Carddate < DateTime.Now || user_toadd.card.Carddate < DateTime.Now)
                 {
                     MessageBox.Show("Card is broken");
                     ClearAll();
                     this.Close();
                     return;
                 }
-
+               
                 user_toadd.card.Balance += double.Parse(txtMoney.Text);
                 user.card.Balance -= double.Parse(txtMoney.Text);
                 storage.RemoveAt(storage.FindIndex(x => x.card.CardNumber == txtUser.Text));
