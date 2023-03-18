@@ -55,7 +55,7 @@ namespace bank
                     this.Close();
                     return;
                 }
-                if(list.Any(x => x.Creditcard == txtCard.Text))
+                if(list.Any(x => x.card.CardNumber == txtCard.Text))
                 {
                     MessageBox.Show("Such card allready used");
                     this.Close();
@@ -63,10 +63,11 @@ namespace bank
                 }
 
                 list.RemoveAt(list.FindIndex(x => x.Nickname == user.Nickname));
-                user.Creditcard = txtCard.Text;               
-                user.Cvv = int.Parse(txtCvv.Text);
-                user.Creditcarddate = DateTime.Parse(txtDate.SelectedDate.Value.ToString());
-                Console.WriteLine(user.Creditcard);
+                user.card.CardNumber = txtCard.Text;               
+                user.card.Cvv = int.Parse(txtCvv.Text);
+                user.card.Carddate = DateTime.Parse(txtDate.SelectedDate.Value.ToString());
+                user.card.Balance = 0;
+                Console.WriteLine(user.card.CardNumber);
                 list.Add(user);
                 var newjson = JsonSerializer.Serialize(list);
                 File.WriteAllText("User Base/USERBASE.json", newjson);

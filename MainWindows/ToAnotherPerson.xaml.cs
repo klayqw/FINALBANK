@@ -81,28 +81,28 @@ namespace bank
 
                 var user_toadd = storage.Find(x => x.Nickname == txtUser.Text);
                
-                if(user_toadd.Creditcard == "0000000000000000")
+                if(user_toadd.card.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if(user.Creditcard == "0000000000000000")
+                if(user.card.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if(user.Balance - double.Parse(txtMoney.Text) < 0)
+                if(user.card.Balance - double.Parse(txtMoney.Text) < 0)
                 {
                     MessageBox.Show("Not enought money");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if(user.Creditcarddate < DateTime.Now || user_toadd.Creditcarddate < DateTime.Now)
+                if(user.card.Carddate < DateTime.Now || user_toadd.card.Carddate < DateTime.Now)
                 {
                     MessageBox.Show("Card is broken");
                     ClearAll();
@@ -110,8 +110,8 @@ namespace bank
                     return;
                 }
 
-                user_toadd.Balance += double.Parse(txtMoney.Text);
-                user.Balance -= double.Parse(txtMoney.Text);
+                user_toadd.card.Balance += double.Parse(txtMoney.Text);
+                user.card.Balance -= double.Parse(txtMoney.Text);
                 storage.RemoveAt(storage.FindIndex(x => x.Nickname == txtUser.Text));
                 storage.RemoveAt(storage.FindIndex(x => x.Nickname == user.Nickname));
                 storage.Add(user_toadd);

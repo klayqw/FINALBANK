@@ -6,6 +6,8 @@ namespace FINALBANK.Classes;
 
 public class User : INotifyPropertyChanged
 {
+    public Card? card { get; set; }
+
 
     private string email;
     public string Email
@@ -110,25 +112,7 @@ public class User : INotifyPropertyChanged
         }
     }
     private string? lastname;
-    public string? Creditcard
-    {
-        get => creditcard;
-        set
-        {
-            if (value == null)
-            {
-                creditcard = null;
-            }
-            if (value.Length != 16)
-            {
-                throw new Exception("Value card too small or too big");
-            }
-            creditcard = value;
-            OnPropertyChanged(nameof(Creditcard));
-        }
-    }
-
-    private string? creditcard;
+    
     public int? Id
     {
         get => id;
@@ -139,38 +123,7 @@ public class User : INotifyPropertyChanged
         }
     }
     private int? id;
-    public int? Cvv
-    {
-        get => cvv;
-        set
-        {
-            if (value == null)
-            {
-                cvv = null;
-            }
-            cvv = value;
-            OnPropertyChanged(nameof(Cvv));
-        }
-    }
-    private int? cvv;
-    public DateTime? Creditcarddate
-    {
-        get => creditcarddate;
-        set
-        {
-            if (value == null)
-            {
-                creditcarddate = null;
-            }
-            if (value.Value.Year < DateTime.Now.Year || value.Value.Year > DateTime.Now.Year + 7)
-            {
-                throw new Exception("Value date too small or too big");
-            }
-            creditcarddate = value;
-            OnPropertyChanged(nameof(Creditcarddate));
-        }
-    }
-    private DateTime? creditcarddate;
+   
     
     public string? Phone
     {
@@ -189,26 +142,7 @@ public class User : INotifyPropertyChanged
             OnPropertyChanged(nameof(Phone));
         }
     }
-    private string? phone;
-    public double? Balance
-    {
-
-        get => balance;
-        set
-        {
-            if (value == null)
-            {
-                balance = null;
-            }
-            if (value >= double.MaxValue)
-            {
-                throw new Exception("Value too small or too big");
-            }
-            balance = value;
-            OnPropertyChanged(nameof(Balance));
-        }
-    }
-    public double? balance;
+    private string? phone;   
 
     public event PropertyChangedEventHandler? PropertyChanged;
 

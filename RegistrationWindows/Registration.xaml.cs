@@ -88,17 +88,20 @@ namespace bank
 
                 var newUser = new User()
                 {
+                    card = new Card()
+                    {
+                        CardNumber = "0000000000000000",
+                        Cvv = 000,
+                        Carddate = DateTime.Now,
+                        Balance = 0,
+                    },
                     Nickname = txtUser.Text,
                     Password = txtPass.Password,
                     Email = txtEmail.Text,
-                    Phone = "00000000000",
-                    Cvv = 0000,
-                    Id = new Random().Next(10000000, 99999999),                    
-                    Creditcarddate = DateTime.Now,
-                    Creditcard = "0000000000000000",
+                    Phone = "00000000000",                  
+                    Id = new Random().Next(10000000, 99999999),                                    
                     Firstname = "Unknow",
-                    Lastname = "Unknow",
-                    Balance = 0,
+                    Lastname = "Unknow",                   
                 };
 
                 if (issend == false)

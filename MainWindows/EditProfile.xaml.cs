@@ -81,13 +81,16 @@ namespace bank
                     Password = txtPass.Password,
                     Email = txtEmail.Text,
                     Phone = txtPhone.Text,
-                    Cvv = user.Cvv,
-                    Id = user.Id,                   
-                    Creditcarddate = user.Creditcarddate,
-                    Creditcard = user.Creditcard,
+                    card = new Card()
+                    {
+                        CardNumber = "0000000000000000",
+                        Cvv = 000,
+                        Balance = 0,
+                        Carddate = DateTime.Now,
+                    },
+                    Id = user.Id,                                      
                     Firstname = txtfirstname.Text,
-                    Lastname = txtlastname.Text,
-                    Balance = user.balance,
+                    Lastname = txtlastname.Text,                    
                 };
 
                 if (issend == false)

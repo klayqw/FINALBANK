@@ -65,7 +65,7 @@ namespace bank
                 }
                                
 
-                if(user.Creditcard == "0000000000000000")
+                if(user.card.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
@@ -73,7 +73,7 @@ namespace bank
                     return;
                 }
                 
-                if(user.Balance - double.Parse(txtMoney.Text)  < 0)
+                if(user.card.Balance - double.Parse(txtMoney.Text)  < 0)
                 {
                     MessageBox.Show("Not enought money on balance!");
                     ClearAll();
@@ -81,7 +81,7 @@ namespace bank
                     return;
                 }
                 list.RemoveAt(list.FindIndex(x => x.Nickname == user.Nickname));
-                user.Balance -= double.Parse(txtMoney.Text);
+                user.card.Balance -= double.Parse(txtMoney.Text);
                 list.Add(user);
                 var jsonnew = JsonSerializer.Serialize(list);
                 File.WriteAllText("User Base/USERBASE.json", jsonnew);

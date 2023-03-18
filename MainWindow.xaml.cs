@@ -28,10 +28,7 @@ namespace bank
         public MainWindow()
         {
             InitializeComponent();
-            var jsontemp = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(jsontemp);
-            var user = list.Find(x => x.Nickname == "klay");
-            new Main(user).Show();
+            
             if (Directory.Exists("User Base") == false)
             {
                 Directory.CreateDirectory("User Base");

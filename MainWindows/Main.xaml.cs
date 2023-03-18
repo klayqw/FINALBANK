@@ -113,11 +113,11 @@ public partial class Main : Window, INotifyPropertyChanged
         ProfileGrid.Visibility = Visibility.Visible;
         nickname.Text = user.Nickname;
         password.Text = user.Password;       
-        creditcard.Text = user.Creditcard;    
-        cvv.Text = user.Cvv.ToString();
-        creditdate.Text = user.Creditcarddate.ToString();   
+        creditcard.Text = user.card.CardNumber;
+        cvv.Text = user.card.Cvv.ToString();
+        creditdate.Text = user.card.Carddate.ToString();   
         phone.Text = user.Phone;
-        balance.Text = user.Balance.ToString();
+        balance.Text = user.card.Balance.ToString();
         id.Text = user.Id.ToString();
         lastname.Text = user.Lastname;
         firstname.Text = user.Firstname;
