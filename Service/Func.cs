@@ -7,15 +7,21 @@ using System.Net.Mail;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using FINALBANK.Classes;
-namespace bank;
+using FINALBANK.Models;
+
+namespace FINALBANK.Service;
 
 class Func
 {
-
+    public static Settings OpenSettings()
+    {
+        var json = File.ReadAllText("settings.json");
+        var settings = JsonSerializer.Deserialize<Settings>(json);
+        return settings;
+    }
     public static int SendCodeEmail(User user)
     {
-        int code = new Random().Next(10000,99999);
+        int code = new Random().Next(10000, 99999);
 
         string fromMail = "pudgearcane5@gmail.com";
         string fromPassword = "pwauepbjjpoovets";
@@ -44,7 +50,7 @@ class Func
         return code;
     }
     public User UserUpdate(User user)
-    {        
+    {
         var json = File.ReadAllText("User Base/USERBASE.json");
         var list = JsonSerializer.Deserialize<List<User>>(json);
         return user = list.Find(x => x.Id == user.Id);

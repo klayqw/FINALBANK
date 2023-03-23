@@ -18,6 +18,7 @@
     <None Remove="back-image.gif" />
     <None Remove="key-icon.png" />
     <None Remove="logo.png" />
+    <None Remove="menu.wav" />
     <None Remove="user-icon.png" />
   </ItemGroup>
 

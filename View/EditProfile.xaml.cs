@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
 using FINALBANK.Classes;
+using FINALBANK.Service;
+using FINALBANK.Models;
 
 namespace bank
 {

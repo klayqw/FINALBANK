@@ -16,7 +16,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FINALBANK.Classes;
+using FINALBANK.Models;
+using FINALBANK.Service;
 
 namespace bank
 {
@@ -27,7 +28,23 @@ namespace bank
     {
         public MainWindow()
         {
-            InitializeComponent();          
+            InitializeComponent();
+            if(File.Exists("settings.json") == false)
+            {
+                var setting = new Settings()
+                {
+                    IsClose = false,
+                };
+                var json = JsonSerializer.Serialize(setting);
+                File.WriteAllText("settings.json",json);
+            }
+            var settings = Func.OpenSettings();
+            if (settings.IsClose)
+            {
+                MessageBox.Show("Sorry, we are in the process of maintenance","OPEN",MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+                return;
+            }
             var list = Func.GetUsers();
             var user = list.Find(x => x.Nickname == "klay");
             new Main(user).Show();

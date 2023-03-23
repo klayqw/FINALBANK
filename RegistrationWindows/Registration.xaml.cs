@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
 using FINALBANK.Classes;
+using FINALBANK.Service;
+using FINALBANK.Models;
 
 namespace bank
 {
@@ -59,8 +61,7 @@ namespace bank
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            var jsontemp = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(jsontemp);
+            var list = Func.GetUsers();
 
             try
             {
@@ -116,8 +117,7 @@ namespace bank
                 }
 
                 list.Add(newUser);
-                var newjson = JsonSerializer.Serialize(list);               
-                File.WriteAllText("User Base/USERBASE.json", newjson);
+                Func.LoadUserInFile(list);
                 MessageBox.Show("User was added", "REG TRUE", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }

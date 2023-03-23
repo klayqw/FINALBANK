@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using FINALBANK.Classes;
 
-namespace FINALBANK.Classes;
+namespace FINALBANK.Models;
 
 public class User : INotifyPropertyChanged
 {
@@ -14,13 +15,13 @@ public class User : INotifyPropertyChanged
     {
         get => email;
         set
-        {           
-            if(value.EndsWith("@gmail.com"))
+        {
+            if (value.EndsWith("@gmail.com"))
             {
                 email = value;
                 return;
             }
-            else if (value.EndsWith("@mail.ru") )
+            else if (value.EndsWith("@mail.ru"))
             {
                 email = value;
                 return;
@@ -28,7 +29,7 @@ public class User : INotifyPropertyChanged
             else if (value.EndsWith("@outlook.com"))
             {
                 email = value;
-                
+
                 return;
             }
             throw new Exception("Wrong Email");
@@ -112,7 +113,7 @@ public class User : INotifyPropertyChanged
         }
     }
     private string? lastname;
-    
+
     public int? Id
     {
         get => id;
@@ -123,8 +124,8 @@ public class User : INotifyPropertyChanged
         }
     }
     private int? id;
-   
-    
+
+
     public string? Phone
     {
         get => phone;
@@ -137,12 +138,12 @@ public class User : INotifyPropertyChanged
             if (value.Length <= 0 || value.Length >= 12)
             {
                 throw new Exception("Value phone too small or too big");
-            }                       
+            }
             phone = value;
             OnPropertyChanged(nameof(Phone));
         }
     }
-    private string? phone;   
+    private string? phone;
 
     public event PropertyChangedEventHandler? PropertyChanged;
 

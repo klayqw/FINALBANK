@@ -2,31 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
-using FINALBANK.Classes;
+using FINALBANK.Models;
+using FINALBANK.Service;
 
 namespace bank
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class ToAnotherPerson : Window
+    public partial class ToAnotherBank : Window
     {
         User user;
-        public ToAnotherPerson(User user)
+        public ToAnotherBank(User user)
         {
             InitializeComponent();
             this.user = user;
@@ -58,13 +48,13 @@ namespace bank
             var storage = Func.GetUsers();
             try
             {
-                if(storage.Any(x => x.Nickname == txtUser.Text) == false)
+                if (storage.Any(x => x.card.CardNumber == txtUser.Text) == false)
                 {
-                    MessageBox.Show("name not find");
+                    MessageBox.Show("Not such card in our base!");
                     ClearAll();
                     return;
-                }             
-                if(txtMoney.Text.Length == 0)
+                }
+                if (txtMoney.Text.Length == 0)
                 {
                     MessageBox.Show("Money not find");
                     ClearAll();
@@ -78,35 +68,34 @@ namespace bank
                     return;
                 }
 
-                var user_toadd = storage.Find(x => x.Nickname == txtUser.Text);
-               
-                if(user_toadd.card.CardNumber == "0000000000000000" || user.card.CardNumber == "0000000000000000")
+                var user_toadd = storage.Find(x => x.card.CardNumber == txtUser.Text);
+
+                if (user_toadd.card.CardNumber == "0000000000000000" || user.card.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
                     this.Close();
                     return;
                 }
-              
-                
-                if(user.card.Balance - double.Parse(txtMoney.Text) < 0)
+               
+                if (user.card.Balance - double.Parse(txtMoney.Text) < 0)
                 {
                     MessageBox.Show("Not enought money");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if(user.card.Carddate < DateTime.Now || user_toadd.card.Carddate < DateTime.Now)
+                if (user.card.Carddate < DateTime.Now || user_toadd.card.Carddate < DateTime.Now)
                 {
                     MessageBox.Show("Card is broken");
                     ClearAll();
                     this.Close();
                     return;
                 }
-
+               
                 user_toadd.card.Balance += double.Parse(txtMoney.Text);
                 user.card.Balance -= double.Parse(txtMoney.Text);
-                storage.RemoveAt(storage.FindIndex(x => x.Nickname == txtUser.Text));
+                storage.RemoveAt(storage.FindIndex(x => x.card.CardNumber == txtUser.Text));
                 storage.RemoveAt(storage.FindIndex(x => x.Nickname == user.Nickname));
                 storage.Add(user_toadd);
                 storage.Add(user);

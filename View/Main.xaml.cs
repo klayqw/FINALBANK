@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
-using FINALBANK.Classes;
+using FINALBANK.Models;
+using FINALBANK.Service;
 
 namespace bank;
 
@@ -29,6 +31,14 @@ public partial class Main : Window, INotifyPropertyChanged
         LiveTime.Tick += timer_Tick;
         LiveTime.Start();
         this.user = user;
+        MusicStart();
+    }
+
+    private void MusicStart()
+    {
+        SoundPlayer sound = new SoundPlayer();
+        sound.SoundLocation = "menu.wav";
+        sound.PlayLooping();
     }
 
     void timer_Tick(object sender, EventArgs e)

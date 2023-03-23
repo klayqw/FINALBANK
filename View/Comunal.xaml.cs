@@ -6,21 +6,21 @@ using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
 using FINALBANK.Classes;
+using FINALBANK.Service;
 
 namespace bank
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Game : Window
+    public partial class Comunal : Window
     {
-        User user;
-        public Game(string buttonname,User user)
+        
+        public Comunal(string buttonname)
         {
             InitializeComponent();
             DataContext = this;
             LabelSet.Text = buttonname;
-            this.user = user;
         }  
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
@@ -46,9 +46,16 @@ namespace bank
 
         private void btnApp_Click(object sender, RoutedEventArgs e)
         {
+           
             var list = Func.GetUsers();
             try
-            {                         
+            {           
+                if(txtUser.Text.Length != 13)
+                {
+                    MessageBox.Show("Error with Code name!");
+                    ClearAll();
+                    return;
+                }
                 if(txtMoney.Text.Length == 0)
                 {
                     MessageBox.Show("Money not find");
@@ -62,17 +69,17 @@ namespace bank
                     ClearAll();
                     return;
                 }
-                               
+               
+                var user = list.Find(x => x.Nickname == txtUser.Text);
 
-                if(user.card.CardNumber == "0000000000000000")
+                if(user?.card?.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                
-                if(user.card.Balance - double.Parse(txtMoney.Text)  < 0)
+                if(user?.card?.Balance - double.Parse(txtMoney.Text)  < 0)
                 {
                     MessageBox.Show("Not enought money on balance!");
                     ClearAll();
@@ -83,7 +90,7 @@ namespace bank
                 user.card.Balance -= double.Parse(txtMoney.Text);
                 list.Add(user);
                 Func.LoadUserInFile(list);
-                MessageBox.Show("All done!", "Games", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("All done!", "Comunal", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 return;
             }

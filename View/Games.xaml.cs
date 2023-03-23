@@ -5,19 +5,22 @@ using System.Linq;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Input;
-using FINALBANK.Classes;
+using FINALBANK.Models;
+using FINALBANK.Service;
 
 namespace bank
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class ToAnotherBank : Window
+    public partial class Game : Window
     {
         User user;
-        public ToAnotherBank(User user)
+        public Game(string buttonname,User user)
         {
             InitializeComponent();
+            DataContext = this;
+            LabelSet.Text = buttonname;
             this.user = user;
         }  
 
@@ -44,16 +47,10 @@ namespace bank
 
         private void btnApp_Click(object sender, RoutedEventArgs e)
         {
-            var storage = Func.GetUsers();
+            var list = Func.GetUsers();
             try
-            {
-                if (storage.Any(x => x.card.CardNumber == txtUser.Text) == false)
-                {
-                    MessageBox.Show("Not such card in our base!");
-                    ClearAll();
-                    return;
-                }
-                if (txtMoney.Text.Length == 0)
+            {                         
+                if(txtMoney.Text.Length == 0)
                 {
                     MessageBox.Show("Money not find");
                     ClearAll();
@@ -66,40 +63,28 @@ namespace bank
                     ClearAll();
                     return;
                 }
+                               
 
-                var user_toadd = storage.Find(x => x.card.CardNumber == txtUser.Text);
-
-                if (user_toadd.card.CardNumber == "0000000000000000" || user.card.CardNumber == "0000000000000000")
+                if(user.card.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
                     this.Close();
                     return;
                 }
-               
-                if (user.card.Balance - double.Parse(txtMoney.Text) < 0)
+                
+                if(user.card.Balance - double.Parse(txtMoney.Text)  < 0)
                 {
-                    MessageBox.Show("Not enought money");
+                    MessageBox.Show("Not enought money on balance!");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if (user.card.Carddate < DateTime.Now || user_toadd.card.Carddate < DateTime.Now)
-                {
-                    MessageBox.Show("Card is broken");
-                    ClearAll();
-                    this.Close();
-                    return;
-                }
-               
-                user_toadd.card.Balance += double.Parse(txtMoney.Text);
+                list.RemoveAt(list.FindIndex(x => x.Nickname == user.Nickname));
                 user.card.Balance -= double.Parse(txtMoney.Text);
-                storage.RemoveAt(storage.FindIndex(x => x.card.CardNumber == txtUser.Text));
-                storage.RemoveAt(storage.FindIndex(x => x.Nickname == user.Nickname));
-                storage.Add(user_toadd);
-                storage.Add(user);
-                Func.LoadUserInFile(storage);
-                MessageBox.Show("All done!", "Replish", MessageBoxButton.OK, MessageBoxImage.Information);
+                list.Add(user);
+                Func.LoadUserInFile(list);
+                MessageBox.Show("All done!", "Games", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 return;
             }
