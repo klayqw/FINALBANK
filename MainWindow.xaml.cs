@@ -44,10 +44,7 @@ namespace bank
                 MessageBox.Show("Sorry, we are in the process of maintenance","OPEN",MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 return;
-            }
-            var list = Func.GetUsers();
-            var user = list.Find(x => x.Nickname == "klay");
-            new Main(user).Show();
+            }          
             if (Directory.Exists("User Base") == false)
             {
                 Directory.CreateDirectory("User Base");
