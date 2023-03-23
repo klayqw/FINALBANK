@@ -260,7 +260,7 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,214,914,298" 
+                    Margin="0,202,914,298" 
                     Grid.Row="1"
                         Click="profile_Click">
                     <Button.Style>
@@ -292,7 +292,7 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,317,914,209" 
+                    Margin="0,303,914,223" 
                     Grid.Row="1"
                     Click="addcart_Click">
                     <Button.Style>
@@ -872,7 +872,7 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Cursor="Hand"
-                        Margin="0,272,914,254" Grid.Row="1"
+                        Margin="0,258,914,268" Grid.Row="1"
                         Click="replenish_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -899,11 +899,11 @@
                     BorderThickness="0"
                     Content="EDIT PROFILE"
                     Foreground="White"
-                    FontSize="25"
+                    FontSize="22"
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,362,914,164" 
+                    Margin="0,350,914,176" 
                     Grid.Row="1"
                     Click="changeprofile_Click">
                     <Button.Style>
@@ -935,7 +935,7 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,407,914,119" 
+                    Margin="0,395,914,131" 
                     Grid.Row="1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">

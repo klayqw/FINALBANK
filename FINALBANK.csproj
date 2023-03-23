@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="back-image.gif" />
     <Resource Include="key-icon.png" />
     <Resource Include="logo.png" />
