@@ -49,4 +49,18 @@ class Func
         var list = JsonSerializer.Deserialize<List<User>>(json);
         return user = list.Find(x => x.Id == user.Id);
     }
+
+    public static void LoadUserInFile(List<User> user)
+    {
+        var json = JsonSerializer.Serialize(user);
+        File.WriteAllText("User Base/USERBASE.json", json);
+        return;
+    }
+
+    public static List<User> GetUsers()
+    {
+        var json = File.ReadAllText("User Base/USERBASE.json");
+        var list = JsonSerializer.Deserialize<List<User>>(json);
+        return list;
+    }
 }

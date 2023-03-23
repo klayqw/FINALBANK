@@ -228,7 +228,7 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,222,914,304" 
+                    Margin="0,172,914,354" 
                     Grid.Row="1"
                     Click="payment_Click">
                     <Button.Style>
@@ -260,7 +260,7 @@
                     FontWeight="Medium"
                     FontFamily="Montserrat"
                     Cursor="Hand"
-                    Margin="0,262,914,249" 
+                    Margin="0,214,914,298" 
                     Grid.Row="1"
                         Click="profile_Click">
                     <Button.Style>
@@ -872,7 +872,7 @@
                         FontWeight="Medium"
                         FontFamily="Montserrat"
                         Cursor="Hand"
-                        Margin="0,176,914,350" Grid.Row="1"
+                        Margin="0,272,914,254" Grid.Row="1"
                         Click="replenish_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">

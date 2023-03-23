@@ -61,7 +61,7 @@ public partial class Main : Window, INotifyPropertyChanged
         HideAll();
         this.homestack.Visibility = Visibility.Visible;
         var storyboard = FindResource("HomeStack") as Storyboard;
-        storyboard.Begin();
+        storyboard?.Begin();
        
     }
 
@@ -79,7 +79,7 @@ public partial class Main : Window, INotifyPropertyChanged
         HideAll();
         Translition.Visibility = Visibility.Visible;
         var storyboard = FindResource("TranslitDock") as Storyboard;
-        storyboard.Begin();
+        storyboard?.Begin();
     }
 
 

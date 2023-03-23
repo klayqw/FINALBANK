@@ -44,8 +44,8 @@ namespace bank
 
         private void btnApp_Click(object sender, RoutedEventArgs e)
         {
-            var json = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(json);
+           
+            var list = Func.GetUsers();
 
             try
             {
@@ -55,7 +55,7 @@ namespace bank
                     this.Close();
                     return;
                 }
-                if(list.Any(x => x.card.CardNumber == txtCard.Text))
+                if(list.Any(x => x.card?.CardNumber == txtCard.Text))
                 {
                     MessageBox.Show("Such card allready used");
                     this.Close();
@@ -63,14 +63,17 @@ namespace bank
                 }
 
                 list.RemoveAt(list.FindIndex(x => x.Nickname == user.Nickname));
-                user.card.CardNumber = txtCard.Text;               
-                user.card.Cvv = int.Parse(txtCvv.Text);
-                user.card.Carddate = DateTime.Parse(txtDate.SelectedDate.Value.ToString());
-                user.card.Balance = 0;
+                var card = new Card()
+                {
+                    CardNumber = txtCard.Text,
+                    Cvv = int.Parse(txtCvv.Text),
+                    Carddate = DateTime.Parse(txtDate.Text),
+                    Balance = 0,
+                };
+                user.card = card;                             
                 Console.WriteLine(user.card.CardNumber);
                 list.Add(user);
-                var newjson = JsonSerializer.Serialize(list);
-                File.WriteAllText("User Base/USERBASE.json", newjson);
+                Func.LoadUserInFile(list);
                 this.Close();
                 return;
             }

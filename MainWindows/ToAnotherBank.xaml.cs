@@ -44,8 +44,7 @@ namespace bank
 
         private void btnApp_Click(object sender, RoutedEventArgs e)
         {
-            var json = File.ReadAllText("User Base/USERBASE.json");
-            var storage = JsonSerializer.Deserialize<List<User>>(json);
+            var storage = Func.GetUsers();
             try
             {
                 if (storage.Any(x => x.card.CardNumber == txtUser.Text) == false)
@@ -70,20 +69,14 @@ namespace bank
 
                 var user_toadd = storage.Find(x => x.card.CardNumber == txtUser.Text);
 
-                if (user_toadd.card.CardNumber == "0000000000000000")
+                if (user_toadd.card.CardNumber == "0000000000000000" || user.card.CardNumber == "0000000000000000")
                 {
                     MessageBox.Show("Card is null");
                     ClearAll();
                     this.Close();
                     return;
                 }
-                if (user.card.CardNumber == "0000000000000000")
-                {
-                    MessageBox.Show("Card is null");
-                    ClearAll();
-                    this.Close();
-                    return;
-                }
+               
                 if (user.card.Balance - double.Parse(txtMoney.Text) < 0)
                 {
                     MessageBox.Show("Not enought money");
@@ -105,8 +98,7 @@ namespace bank
                 storage.RemoveAt(storage.FindIndex(x => x.Nickname == user.Nickname));
                 storage.Add(user_toadd);
                 storage.Add(user);
-                var jsonfile = JsonSerializer.Serialize(storage);
-                File.WriteAllText("User Base/USERBASE.json", jsonfile);
+                Func.LoadUserInFile(storage);
                 MessageBox.Show("All done!", "Replish", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 return;

@@ -60,8 +60,7 @@ namespace bank
 
         private void btnReg_Click(object sender, RoutedEventArgs e)
         {
-            var json = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(json);
+            var list = Func.GetUsers();
 
             try
             {
@@ -104,14 +103,13 @@ namespace bank
                     txtfirstname.IsEnabled = false;
                     txtlastname.IsEnabled = false;
                     txtPhone.IsEnabled = false;
-
                     return;
                 }
 
                 list.RemoveAt(list.FindIndex(x => x.Nickname == user.Nickname));
                 list.Add(newUser);
-                var newjson = JsonSerializer.Serialize(list);
-                File.WriteAllText("User Base/USERBASE.json", newjson);
+                list.ForEach(x => Console.WriteLine(x.Firstname));
+                Func.LoadUserInFile(list);
                 MessageBox.Show("User was added", "REG TRUE", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }

@@ -46,8 +46,7 @@ namespace bank
 
         private void btnApp_Click(object sender, RoutedEventArgs e)
         {
-            var json = File.ReadAllText("User Base/USERBASE.json");
-            var list = JsonSerializer.Deserialize<List<User>>(json);
+            var list = Func.GetUsers();
             try
             {                         
                 if(txtMoney.Text.Length == 0)
@@ -83,8 +82,7 @@ namespace bank
                 list.RemoveAt(list.FindIndex(x => x.Nickname == user.Nickname));
                 user.card.Balance -= double.Parse(txtMoney.Text);
                 list.Add(user);
-                var jsonnew = JsonSerializer.Serialize(list);
-                File.WriteAllText("User Base/USERBASE.json", jsonnew);
+                Func.LoadUserInFile(list);
                 MessageBox.Show("All done!", "Games", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 return;
